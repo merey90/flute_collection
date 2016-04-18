@@ -1,10 +1,31 @@
-[
-    {
-        "title":"tocatta",
-        "author":"Bach"
+[{
+    "title": "tocatta",
+    "author": "Bach",
+    "year": 1990,
+    "instruments": {
+        "organ": 1,
+        "violin": 3,
+        "flute": 1
     },
-    {
-        "title":"minuet 1",
-        "author":"Brahms"
-    }
-]
+    "genre": ["classic"],
+    "videoScr": {
+        "youtube": "https://www.youtube.com/watch?v=ipzR9bhei_o"
+    },
+    "notesScr": "https://vk.com",
+    "level": "D minor"
+}, {
+    "title": "minuet 1",
+    "author": "Brahms",
+    "year": 1991,
+    "instruments": {
+        "organ": 1,
+        "violin": 3,
+        "flute": 1
+    },
+    "genre": ["classic"],
+    "videoScr": {
+        "youtube": "https://www.youtube.com/watch?v=POW-u-RGspY"
+    },
+    "notesScr": "https://vk.com",
+    "level": "D minor"
+}]

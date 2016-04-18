@@ -6,7 +6,7 @@ angular.module('fluteCollection', ["ui.router"])
   $urlRouterProvider.otherwise('/compositions')
 
   $stateProvider
-    .state('home', {
+    .state('compositions', {
       url: '/compositions',
       templateUrl: 'views/compositions/compositions-list.html',
       resolve: {
@@ -18,5 +18,19 @@ angular.module('fluteCollection', ["ui.router"])
         this.compositions = compositionsService.data;
       },
       controllerAs: 'compositionsCtrl'
+    })
+    .state('compositions.details', {
+      url: '/:id',
+      templateUrl: 'views/compositions/composition-details.html',
+      resolve: {
+        compositionService: function($http, $stateParams) {
+          return $http.get('/compositions/'+$stateParams.id);
+        }
+      },
+      controller: function(compositionService, $location) {
+        console.log("yoloo");
+        this.cdetails = compositionService.data;
+      },
+      controllerAs: 'compositionCtrl'
     })
 })

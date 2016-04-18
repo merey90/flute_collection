@@ -1,7 +1,9 @@
 <div class="container">
     <ul class="list-unstyled">
         <li ng-repeat="composition in compositionsCtrl.compositions">
-             {{composition}}
+             <a ui-sref="compositions.details({id: composition._id})">{{composition.title}}</a>
         </li>
     </ul>
 </div>
+
+<div ui-view></div>

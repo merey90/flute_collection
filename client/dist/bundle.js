@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _angular2.default.module('fluteCollection', ["ui.router"]).config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/compositions');
 
-  $stateProvider.state('home', {
+  $stateProvider.state('compositions', {
     url: '/compositions',
     templateUrl: 'views/compositions/compositions-list.html',
     resolve: {
@@ -24,6 +24,19 @@ _angular2.default.module('fluteCollection', ["ui.router"]).config(function ($sta
       this.compositions = compositionsService.data;
     },
     controllerAs: 'compositionsCtrl'
+  }).state('compositions.details', {
+    url: '/:id',
+    templateUrl: 'views/compositions/composition-details.html',
+    resolve: {
+      compositionService: function compositionService($http, $stateParams) {
+        return $http.get('/compositions/' + $stateParams.id);
+      }
+    },
+    controller: function controller(compositionService, $location) {
+      console.log("yoloo");
+      this.cdetails = compositionService.data;
+    },
+    controllerAs: 'compositionCtrl'
   });
 });
 

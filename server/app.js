@@ -7,8 +7,6 @@ let mongoUtil = require("./mongoUtil");
 let oId = require('mongodb').ObjectId;
 mongoUtil.connect();
 
-
-
 app.use(express.static(__dirname + "/../client"));
 
 app.get("/compositions", (rq, rs) => {

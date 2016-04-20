@@ -1,0 +1,41 @@
+@keyframes slide-in {
+    0% {
+        margin-left: 100%;
+    }
+    50%{
+        margin-left: 0px;
+    }
+    75%{
+        margin-left: 30px;
+    }
+    90%{
+        margin-left: 0px;
+    }
+    95%{
+        margin-left: 10px;
+    }
+    100% {
+        margin-left: 0px;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes color-change {
+    0% {
+        background-color: #555;
+    }
+    50% {
+        background-color: #BFBFB0;
+    }
+    100% {
+        background-color: #555;
+    }
+}

@@ -1,4 +1,134 @@
-body{
-    background-color:black;
-    color:white;
+@import 'variables';
+@import 'mixings';
+@import 'animations';
+
+html{
+    height: 100%;  
+    body{
+        background-image: url(/images/bg1.png);
+        height: 100%;
+        nav.navbar{
+            z-index: 1;
+            height:200px;
+            background-color: white;
+            margin-bottom: 0px;
+            .container{
+                padding: 30px;
+                height:200px;
+                background-image: url(/images/flute.png);
+                background-repeat: no-repeat;
+                background-position: 80% 50%;
+                background-size: contain;
+                .navbar_brand{
+                    text-decoration:none;
+                    font-family: 'Tangerine', cursive;
+                    -webkit-transition: color 0.2s ease;
+                	-moz-transition: color 0.2s ease;
+                	-o-transition: color 0.2s ease;
+                	transition: color 0.2s ease;
+                	position: relative;
+                	font-weight: bold;
+                	color: #878787;
+                	text-shadow: 0px 0px 0px #ABABAB, 
+                         0px 1px 3px #828282, 
+                         0px 2px 0px #4F4F4F, 
+                         0px 3px 0px #4F4F4F, 
+                         0px 4px 0px #4F4F4F, 
+                         0px 5px 1px rgba(0,0,0,0.7), 
+                         0px 9px 5px rgba(0,0,0,0.5);
+                    &:after {
+                    	color: rgba(255,255,255,0.0);
+                    	text-shadow: 0px -2px 2px rgba(255,255,255,0.6);
+                    	content: "FLUTE"; /* Must be the same as the text */
+                    	position: absolute;
+                    	right: 0px;
+                    }
+                    &:hover {
+                    	color: #DEDEDE;
+                    }
+                    .big{
+                        font-size: 80px;    
+                        float: left;
+                    }
+                    .small{
+                        font-size: 40px;
+                        float: left;
+                        clear: left;
+                        margin-top: -40px;
+                    }
+                    
+                }
+            }
+            
+        }
+        .container.main_container{
+            min-height: 100%;
+            padding-top: 270px;
+            margin-top: -250px;
+            padding-bottom: 20px;
+            padding-left: 65px;
+            position: relative;
+            background-color: white;
+            #sidebar{
+                max-width: 340px;
+                width: 50px;
+                position: absolute;
+                overflow-x: hidden;
+                overflow-y: auto;
+                top: 250px;
+                border-right: 1px solid gray;
+                bottom: 0px;
+                left: 0px;
+                &.affix-top{
+                    position: absolute;
+                    // top: 250px;
+                    // left: 0px;
+                }
+                // &.affix-bottom{
+                //     position: absolute;
+                //     top: 0px;
+                //     left: 0px;
+                // }
+                &.affix{
+                    position: fixed;
+                    top: 0px;
+                }
+            }
+            .content_container{
+                min-height: 100%;
+                .compositions_list{
+                    float:left;
+                    width: (100% - $details_min_width);
+                    &.closed{
+                        width: (100% - $details_max_width);
+                    }
+                    &.open{
+                        width: (100% - $details_min_width);
+                    }
+                }
+                .composition_details{
+                    background-color: $dark-gray;
+                    float: left;
+                    height: 100%;
+                    width: $details_min_width;
+                    padding: 10px;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    @include border-radius(35px);
+                    &.closed{
+                        animation: color-change 10s ease infinite;
+                        width: $details_min_width;
+                    }
+                    &.open{
+                        width: $details_max_width;
+                    }
+                }
+            }
+            
+        }
+        .footer{
+            height:50px;
+            padding: 15px;
+        }
+    }
 }

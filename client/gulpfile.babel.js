@@ -34,5 +34,5 @@ gulp.task('styles', () => {
 });
 
 gulp.task("watch", ["transpile", "styles"], () => {
-  gulp.watch("src/**/*", ["transpile"]);
+  gulp.watch("src/**/*", ["transpile", "styles"]);
 });

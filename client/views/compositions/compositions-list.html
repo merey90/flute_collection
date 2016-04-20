@@ -1,4 +1,4 @@
-<div class="container">
+<div class="compositions_list open">
     <ul class="list-unstyled">
         <li ng-repeat="composition in compositionsCtrl.compositions">
              <a ui-sref="compositions.details({id: composition._id})">{{composition.title}}</a>
@@ -6,4 +6,4 @@
     </ul>
 </div>
 
-<div ui-view></div>
+<div class="composition_details closed" ui-view></div>

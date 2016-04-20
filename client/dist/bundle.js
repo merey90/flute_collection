@@ -22,6 +22,22 @@ _angular2.default.module('fluteCollection', ["ui.router"]).config(function ($sta
     },
     controller: function controller(compositionsService, $location) {
       this.compositions = compositionsService.data;
+      $(function () {
+        $('#sidebar').affix({
+          offset: {
+            top: 201,
+            bottom: 53
+          }
+        }).on("affixed.bs.affix", function () {
+          $(this).css("left", $(".main_container").css('marginLeft'));
+        }).on("affix-top.bs.affix", function () {
+          $(this).css("left", 0);
+        }).on("affix-bottom.bs.affix", function () {
+          $(this).css("left", 0);
+        }).on("affixed-bottom.bs.affix", function () {
+          $(this).css("left", 0);
+        });
+      });
     },
     controllerAs: 'compositionsCtrl'
   }).state('compositions.details', {
@@ -33,7 +49,6 @@ _angular2.default.module('fluteCollection', ["ui.router"]).config(function ($sta
       }
     },
     controller: function controller(compositionService, $location) {
-      console.log("yoloo");
       this.cdetails = compositionService.data;
     },
     controllerAs: 'compositionCtrl'

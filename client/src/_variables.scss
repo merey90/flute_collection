@@ -1,0 +1,31 @@
+$dark-gray : #555;
+$light-gray : #BFBFB0;
+$red : #FF3B1E;
+$light-green : #0FFF00;
+$green : #0CBF00;
+$blue : #0015BF;
+$dark-white : #FFFEEA;
+$details_min_width: 5%;
+$details_max_width: 60%;
+@import url(https://fonts.googleapis.com/css?family=Tangerine:400,700);
+
+@media (min-width: 768px){
+    $details_min_width: 10%;
+    $details_max_width: 60%;
+}
+
+@media (min-width: 992px){
+    $details_min_width: 10%;
+    $details_max_width: 60%;
+}
+@media (min-width: 1200px){
+    $details_min_width: 10%;
+    $details_max_width: 60%;
+}
+@media (min-width: 1600px){
+    $details_min_width: 5%;
+    $details_max_width: 60%;
+    .container {
+        width: 1400px;
+    }
+}

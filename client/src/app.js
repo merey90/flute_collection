@@ -16,6 +16,23 @@ angular.module('fluteCollection', ["ui.router"])
       },
       controller: function(compositionsService, $location) {
         this.compositions = compositionsService.data;
+        $(function(){
+          $('#sidebar').affix({
+            offset: {
+              top: 201,
+              bottom: 53
+            }
+          }).on("affixed.bs.affix", function(){
+            $(this).css("left", $(".main_container").css('marginLeft'));
+          }).on("affix-top.bs.affix", function(){
+            $(this).css("left", 0);
+          }).on("affix-bottom.bs.affix", function(){
+            $(this).css("left", 0);
+          }).on("affixed-bottom.bs.affix", function(){
+            $(this).css("left", 0);
+          });
+          
+        });
       },
       controllerAs: 'compositionsCtrl'
     })
@@ -28,7 +45,6 @@ angular.module('fluteCollection', ["ui.router"])
         }
       },
       controller: function(compositionService, $location) {
-        console.log("yoloo");
         this.cdetails = compositionService.data;
       },
       controllerAs: 'compositionCtrl'

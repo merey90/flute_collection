@@ -16,22 +16,43 @@ angular.module('fluteCollection', ["ui.router"])
       },
       controller: function(compositionsService, $location) {
         this.compositions = compositionsService.data;
-        $(function(){
+        let detailsShow = false;
+        
+        this.isActive = function(id) {
+          let pathRegexp = /compositions\/(\w+)/;
+          let match = pathRegexp.exec($location.path());
+          if (match === null || match.length === 0){
+            detailsShow = false;
+            return false;
+          } 
+          let selectedComposition = match[1];
+          if(id == selectedComposition){
+            detailsShow = true;
+            return id === selectedComposition;  
+          }
+          
+        }
+
+        this.isDetails = function(){
+          return detailsShow;
+        }
+
+        $(function() {
           $('#sidebar').affix({
             offset: {
               top: 201,
               bottom: 53
             }
-          }).on("affixed.bs.affix", function(){
+          }).on("affixed.bs.affix", function() {
             $(this).css("left", $(".main_container").css('marginLeft'));
-          }).on("affix-top.bs.affix", function(){
+          }).on("affix-top.bs.affix", function() {
             $(this).css("left", 0);
-          }).on("affix-bottom.bs.affix", function(){
+          }).on("affix-bottom.bs.affix", function() {
             $(this).css("left", 0);
-          }).on("affixed-bottom.bs.affix", function(){
+          }).on("affixed-bottom.bs.affix", function() {
             $(this).css("left", 0);
           });
-          
+
         });
       },
       controllerAs: 'compositionsCtrl'
@@ -41,12 +62,20 @@ angular.module('fluteCollection', ["ui.router"])
       templateUrl: 'views/compositions/composition-details.html',
       resolve: {
         compositionService: function($http, $stateParams) {
-          return $http.get('/compositions/'+$stateParams.id);
+          return $http.get('/compositions/' + $stateParams.id);
         }
       },
       controller: function(compositionService, $location) {
-        this.cdetails = compositionService.data;
+        this.compositionDetails = compositionService.data;
       },
       controllerAs: 'compositionCtrl'
+    })
+    .state('about', {
+      url: '/about',
+      templateUrl: 'views/static_pages/about.html',
+      controller: function() {
+
+      },
+      controllerAs: 'aboutCtrl'
     })
 })

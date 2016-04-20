@@ -22,6 +22,26 @@ _angular2.default.module('fluteCollection', ["ui.router"]).config(function ($sta
     },
     controller: function controller(compositionsService, $location) {
       this.compositions = compositionsService.data;
+      var detailsShow = false;
+
+      this.isActive = function (id) {
+        var pathRegexp = /compositions\/(\w+)/;
+        var match = pathRegexp.exec($location.path());
+        if (match === null || match.length === 0) {
+          detailsShow = false;
+          return false;
+        }
+        var selectedComposition = match[1];
+        if (id == selectedComposition) {
+          detailsShow = true;
+          return id === selectedComposition;
+        }
+      };
+
+      this.isDetails = function () {
+        return detailsShow;
+      };
+
       $(function () {
         $('#sidebar').affix({
           offset: {
@@ -49,9 +69,14 @@ _angular2.default.module('fluteCollection', ["ui.router"]).config(function ($sta
       }
     },
     controller: function controller(compositionService, $location) {
-      this.cdetails = compositionService.data;
+      this.compositionDetails = compositionService.data;
     },
     controllerAs: 'compositionCtrl'
+  }).state('about', {
+    url: '/about',
+    templateUrl: 'views/static_pages/about.html',
+    controller: function controller() {},
+    controllerAs: 'aboutCtrl'
   });
 });
 

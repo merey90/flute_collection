@@ -12,12 +12,15 @@ app.use(express.static(__dirname + "/../client"));
 app.get("/compositions", (rq, rs) => {
     let compositions = mongoUtil.compositions();
     compositions.find({}, {
-        "title": true
+        "title": true,
+        "author": true,
+        "level": true
     }).toArray((err, docs) => {
         if (err) {
             rs.sendStatus(400);
         }
         if (docs) {
+            console.log(docs);
             rs.json(docs);
         }
         else {

@@ -95,6 +95,7 @@ html{
                 }
             }
             .content_container{
+                overflow-x: hidden;
                 min-height: 100%;
                 .compositions_list{
                     float:left;
@@ -102,8 +103,36 @@ html{
                     &.closed{
                         width: (100% - $details_max_width);
                     }
-                    &.open{
-                        width: (100% - $details_min_width);
+                    li{
+                        background-image: url(/images/key-symbol-sm.png);
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        background-position: 0% 50%;
+                        margin-bottom: 10px;
+                        padding: 0px 30px 0px 15px;
+                        a{
+                            color: black;
+                            padding: 10px 15px;
+                            div.row{
+                                
+                                div{
+                                    padding-left: 50px;
+                                    &.composition_title{
+                                        border-top: 1px solid black;
+                                        border-bottom: 1px solid black;
+                                    }
+                                    &.composition_author{
+                                        border-bottom: 1px solid black;
+                                    }
+                                }
+                            }
+                        }
+                        &.is_active{
+                            animation: color-change 10s ease infinite;
+                            a{
+                                color: white;
+                            }
+                        }
                     }
                 }
                 .composition_details{
@@ -114,11 +143,7 @@ html{
                     padding: 10px;
                     overflow-x: hidden;
                     overflow-y: auto;
-                    @include border-radius(35px);
-                    &.closed{
-                        animation: color-change 10s ease infinite;
-                        width: $details_min_width;
-                    }
+                    animation: color-change 10s ease infinite;
                     &.open{
                         width: $details_max_width;
                     }

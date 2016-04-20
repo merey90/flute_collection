@@ -126,14 +126,35 @@ html {
           position: fixed;
           top: 0px; }
       html body .container.main_container .content_container {
+        overflow-x: hidden;
         min-height: 100%; }
         html body .container.main_container .content_container .compositions_list {
           float: left;
           width: 95%; }
           html body .container.main_container .content_container .compositions_list.closed {
             width: 40%; }
-          html body .container.main_container .content_container .compositions_list.open {
-            width: 95%; }
+          html body .container.main_container .content_container .compositions_list li {
+            background-image: url(/images/key-symbol-sm.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: 0% 50%;
+            margin-bottom: 10px;
+            padding: 0px 30px 0px 15px; }
+            html body .container.main_container .content_container .compositions_list li a {
+              color: black;
+              padding: 10px 15px; }
+              html body .container.main_container .content_container .compositions_list li a div.row div {
+                padding-left: 50px; }
+                html body .container.main_container .content_container .compositions_list li a div.row div.composition_title {
+                  border-top: 1px solid black;
+                  border-bottom: 1px solid black; }
+                html body .container.main_container .content_container .compositions_list li a div.row div.composition_author {
+                  border-bottom: 1px solid black; }
+            html body .container.main_container .content_container .compositions_list li.is_active {
+              -webkit-animation: color-change 10s ease infinite;
+                      animation: color-change 10s ease infinite; }
+              html body .container.main_container .content_container .compositions_list li.is_active a {
+                color: white; }
         html body .container.main_container .content_container .composition_details {
           background-color: #555;
           float: left;
@@ -142,11 +163,8 @@ html {
           padding: 10px;
           overflow-x: hidden;
           overflow-y: auto;
-          border-radius: 35px; }
-          html body .container.main_container .content_container .composition_details.closed {
-            -webkit-animation: color-change 10s ease infinite;
-                    animation: color-change 10s ease infinite;
-            width: 5%; }
+          -webkit-animation: color-change 10s ease infinite;
+                  animation: color-change 10s ease infinite; }
           html body .container.main_container .content_container .composition_details.open {
             width: 60%; }
     html body .footer {

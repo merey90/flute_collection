@@ -39,3 +39,49 @@
         background-color: #555;
     }
 }
+
+@keyframes more-color-change {
+    0% {
+        background-color: #ff0202;
+    }
+    10% {
+        background-color: #ff039a;
+    }
+    20% {
+        background-color: #cd03ff;
+    }
+    30% {
+        background-color: #3503ff;
+    }
+    40% {
+        background-color: #0368ff;
+    }
+    50% {
+        background-color: #03ffff;
+    }
+    60% {
+        background-color: #03ff68;
+    }
+    70% {
+        background-color: #35ff03;
+    }
+    80% {
+        background-color: #cdff03;
+    }
+    90% {
+        background-color: #ff9a03;
+    }
+    100% {
+        background-color: #ff0202;
+    }
+}
+
+@keyframes flip-horizontal {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}

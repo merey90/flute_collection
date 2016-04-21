@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Tangerine:400,700);
+@import url(https://fonts.googleapis.com/css?family=Marck+Script&subset=latin,cyrillic);
 @media (min-width: 1600px) {
   .container {
     width: 1400px; } }
@@ -59,6 +60,70 @@
   100% {
     background-color: #555; } }
 
+@-webkit-keyframes more-color-change {
+  0% {
+    background-color: #ff0202; }
+  10% {
+    background-color: #ff039a; }
+  20% {
+    background-color: #cd03ff; }
+  30% {
+    background-color: #3503ff; }
+  40% {
+    background-color: #0368ff; }
+  50% {
+    background-color: #03ffff; }
+  60% {
+    background-color: #03ff68; }
+  70% {
+    background-color: #35ff03; }
+  80% {
+    background-color: #cdff03; }
+  90% {
+    background-color: #ff9a03; }
+  100% {
+    background-color: #ff0202; } }
+
+@keyframes more-color-change {
+  0% {
+    background-color: #ff0202; }
+  10% {
+    background-color: #ff039a; }
+  20% {
+    background-color: #cd03ff; }
+  30% {
+    background-color: #3503ff; }
+  40% {
+    background-color: #0368ff; }
+  50% {
+    background-color: #03ffff; }
+  60% {
+    background-color: #03ff68; }
+  70% {
+    background-color: #35ff03; }
+  80% {
+    background-color: #cdff03; }
+  90% {
+    background-color: #ff9a03; }
+  100% {
+    background-color: #ff0202; } }
+
+@-webkit-keyframes flip-horizontal {
+  from {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg); }
+  to {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg); } }
+
+@keyframes flip-horizontal {
+  from {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg); }
+  to {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg); } }
+
 html {
   height: 100%; }
   html body {
@@ -103,13 +168,14 @@ html {
             clear: left;
             margin-top: -40px; }
     html body .container.main_container {
+      font-family: 'Marck Script', cursive;
       min-height: 100%;
       padding-top: 270px;
       margin-top: -250px;
       padding-bottom: 20px;
       padding-left: 65px;
       position: relative;
-      background-color: white; }
+      background-color: #FEFCFF; }
       html body .container.main_container #sidebar {
         max-width: 340px;
         width: 50px;
@@ -130,43 +196,68 @@ html {
         min-height: 100%; }
         html body .container.main_container .content_container .compositions_list {
           float: left;
-          width: 95%; }
+          width: 100%;
+          -webkit-transition: width 0.1s ease-in-out;
+          transition: width 0.1s ease-in-out; }
           html body .container.main_container .content_container .compositions_list.closed {
             width: 40%; }
           html body .container.main_container .content_container .compositions_list li {
-            background-image: url(/images/key-symbol-sm.png);
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: 0% 50%;
+            position: relative;
             margin-bottom: 10px;
             padding: 0px 30px 0px 15px; }
+            html body .container.main_container .content_container .compositions_list li .music-key-img {
+              position: absolute;
+              top: 0;
+              left: 5px;
+              bottom: 0;
+              width: 35px;
+              background-image: url(/images/key-symbol-sm.png);
+              background-repeat: no-repeat;
+              background-size: contain;
+              background-position: 50% 50%;
+              -webkit-transform-style: preserve-3d;
+                      transform-style: preserve-3d; }
+              html body .container.main_container .content_container .compositions_list li .music-key-img.rotate {
+                -webkit-animation: flip-horizontal 1.5s linear infinite;
+                        animation: flip-horizontal 1.5s linear infinite; }
             html body .container.main_container .content_container .compositions_list li a {
               color: black;
               padding: 10px 15px; }
-              html body .container.main_container .content_container .compositions_list li a div.row div {
-                padding-left: 50px; }
-                html body .container.main_container .content_container .compositions_list li a div.row div.composition_title {
+              html body .container.main_container .content_container .compositions_list li a div.row > div {
+                padding-left: 50px;
+                font-size: 18px; }
+                html body .container.main_container .content_container .compositions_list li a div.row > div.composition_title {
                   border-top: 1px solid black;
                   border-bottom: 1px solid black; }
-                html body .container.main_container .content_container .compositions_list li a div.row div.composition_author {
+                html body .container.main_container .content_container .compositions_list li a div.row > div.composition_author {
+                  font-size: 20px;
                   border-bottom: 1px solid black; }
-            html body .container.main_container .content_container .compositions_list li.is_active {
-              -webkit-animation: color-change 10s ease infinite;
-                      animation: color-change 10s ease infinite; }
-              html body .container.main_container .content_container .compositions_list li.is_active a {
-                color: white; }
         html body .container.main_container .content_container .composition_details {
-          background-color: #555;
           float: left;
           height: 100%;
-          width: 5%;
-          padding: 10px;
-          overflow-x: hidden;
-          overflow-y: auto;
-          -webkit-animation: color-change 10s ease infinite;
-                  animation: color-change 10s ease infinite; }
+          width: 0%;
+          padding: 15px;
+          -webkit-transition: width 0.1s ease-in-out;
+          transition: width 0.1s ease-in-out; }
+          html body .container.main_container .content_container .composition_details div.col-xs-12 {
+            display: none; }
+            html body .container.main_container .content_container .composition_details div.col-xs-12:after, html body .container.main_container .content_container .composition_details div.col-xs-12:before {
+              border: 0.5em solid #878787;
+              bottom: 0;
+              content: '';
+              position: absolute;
+              top: 0;
+              width: 10%; }
+            html body .container.main_container .content_container .composition_details div.col-xs-12:after {
+              border-left: none;
+              right: 0; }
+            html body .container.main_container .content_container .composition_details div.col-xs-12:before {
+              border-right: none;
+              left: 0; }
           html body .container.main_container .content_container .composition_details.open {
             width: 60%; }
+            html body .container.main_container .content_container .composition_details.open div.col-xs-12 {
+              display: block; }
     html body .footer {
       height: 50px;
       padding: 15px; }

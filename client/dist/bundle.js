@@ -20,26 +20,33 @@ _angular2.default.module('fluteCollection', ["ui.router"]).config(function ($sta
         return $http.get('/compositions');
       }
     },
-    controller: function controller(compositionsService, $location) {
+    controller: function controller(compositionsService, $location, $scope) {
       this.compositions = compositionsService.data;
-      var detailsShow = false;
+      // let detailsShow = false;
 
       this.isActive = function (id) {
         var pathRegexp = /compositions\/(\w+)/;
         var match = pathRegexp.exec($location.path());
         if (match === null || match.length === 0) {
-          detailsShow = false;
+          $scope.detailsShow = false;
           return false;
         }
         var selectedComposition = match[1];
         if (id == selectedComposition) {
-          detailsShow = true;
+          // detailsShow = true;
           return id === selectedComposition;
         }
       };
 
+      $scope.detailsShow = false;
+
       this.isDetails = function () {
-        return detailsShow;
+        return $scope.detailsShow;
+      };
+
+      this.toggleWidth = function (id) {
+        $scope.rotateId = id;
+        if ($scope.detailsShow) $scope.detailsShow = false;else $scope.detailsShow = true;
       };
 
       $(function () {
@@ -68,8 +75,16 @@ _angular2.default.module('fluteCollection', ["ui.router"]).config(function ($sta
         return $http.get('/compositions/' + $stateParams.id);
       }
     },
-    controller: function controller(compositionService, $location) {
+    controller: function controller(compositionService, $location, $scope, $sce) {
       this.compositionDetails = compositionService.data;
+      if (this.compositionDetails) {
+        $scope.$parent.detailsShow = true;
+        $scope.$parent.rotateId = this.compositionDetails._id;
+      }
+
+      this.trustSrc = function (src) {
+        return $sce.trustAsResourceUrl(src);
+      };
     },
     controllerAs: 'compositionCtrl'
   }).state('about', {

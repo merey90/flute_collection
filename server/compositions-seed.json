@@ -9,7 +9,7 @@
     },
     "genre": ["classic"],
     "videoScr": {
-        "youtube": "https://www.youtube.com/watch?v=ipzR9bhei_o"
+        "youtube": "https://www.youtube.com/embed/ipzR9bhei_o"
     },
     "notesScr": "https://vk.com",
     "level": "D minor",
@@ -25,7 +25,7 @@
     },
     "genre": ["classic"],
     "videoScr": {
-        "youtube": "https://www.youtube.com/watch?v=POW-u-RGspY"
+        "youtube": "https://www.youtube.com/embed/POW-u-RGspY"
     },
     "notesScr": "https://vk.com",
     "level": "B minor",

@@ -1,7 +1,8 @@
 <div class="compositions_list" ng-class="{'closed': compositionsCtrl.isDetails()}">
     <ul class="list-unstyled">
         <li ng-repeat="composition in compositionsCtrl.compositions"  ng-class="{'is_active': compositionsCtrl.isActive(composition._id)}">
-            <a ui-sref="compositions.details({id: composition._id})">
+            <span class="music-key-img" ng-class="{'rotate': rotateId === composition._id}"></span>
+            <a ui-sref="compositions.details({id: composition._id})" ng-click="compositionsCtrl.toggleWidth(composition._id)">
                 <div class="row">
                     <div class="col-xs-12 composition_title">
                         {{composition.title}} in {{composition.level}}
@@ -15,4 +16,8 @@
     </ul>
 </div>
 
-<div class="composition_details" ng-class="{'open': compositionsCtrl.isDetails()}" ui-view></div>
+<div class="composition_details" ng-class="{'open': compositionsCtrl.isDetails()}">
+    <div class="row" ui-view>
+        
+    </div>
+</div>

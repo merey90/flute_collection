@@ -62,13 +62,14 @@ html{
             
         }
         .container.main_container{
+            font-family: 'Marck Script', cursive;
             min-height: 100%;
             padding-top: 270px;
             margin-top: -250px;
             padding-bottom: 20px;
             padding-left: 65px;
             position: relative;
-            background-color: white;
+            background-color: $milky-white;
             #sidebar{
                 max-width: 340px;
                 width: 50px;
@@ -81,14 +82,7 @@ html{
                 left: 0px;
                 &.affix-top{
                     position: absolute;
-                    // top: 250px;
-                    // left: 0px;
                 }
-                // &.affix-bottom{
-                //     position: absolute;
-                //     top: 0px;
-                //     left: 0px;
-                // }
                 &.affix{
                     position: fixed;
                     top: 0px;
@@ -100,53 +94,86 @@ html{
                 .compositions_list{
                     float:left;
                     width: (100% - $details_min_width);
+                    transition: width 0.1s ease-in-out;
                     &.closed{
                         width: (100% - $details_max_width);
                     }
                     li{
-                        background-image: url(/images/key-symbol-sm.png);
-                        background-repeat: no-repeat;
-                        background-size: contain;
-                        background-position: 0% 50%;
+                        position: relative;
                         margin-bottom: 10px;
                         padding: 0px 30px 0px 15px;
+                        .music-key-img{
+                            position: absolute;
+                            top: 0;
+                            left: 5px;
+                            bottom: 0;
+                            width: 35px;
+                            background-image: url(/images/key-symbol-sm.png);
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                            background-position: 50% 50%;
+                            transform-style: preserve-3d;
+                            &.rotate{
+                                animation: flip-horizontal 1.5s linear infinite;
+                            }
+                        }
                         a{
                             color: black;
                             padding: 10px 15px;
-                            div.row{
-                                
-                                div{
-                                    padding-left: 50px;
-                                    &.composition_title{
-                                        border-top: 1px solid black;
-                                        border-bottom: 1px solid black;
-                                    }
-                                    &.composition_author{
-                                        border-bottom: 1px solid black;
-                                    }
+                            div.row > div{
+                                padding-left: 50px;
+                                font-size: 18px;
+                                &.composition_title{
+                                    border-top: 1px solid black;
+                                    border-bottom: 1px solid black;
+                                }
+                                &.composition_author{
+                                    font-size: 20px;
+                                    border-bottom: 1px solid black;
                                 }
                             }
                         }
                         &.is_active{
-                            animation: color-change 10s ease infinite;
+                            // animation: color-change 10s ease infinite;
                             a{
-                                color: white;
+                                // color: white;
                             }
                         }
                     }
                 }
                 .composition_details{
-                    background-color: $dark-gray;
                     float: left;
                     height: 100%;
                     width: $details_min_width;
-                    padding: 10px;
-                    overflow-x: hidden;
-                    overflow-y: auto;
-                    animation: color-change 10s ease infinite;
+                    padding: 15px;
+                    transition: width 0.1s ease-in-out;
+                    div.col-xs-12{
+                        display:none;
+                        &:after,
+                        &:before {
+                            border: .5em solid $light-gray; 
+                            bottom: 0;    
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            width: 10%;
+                        }
+                        &:after {
+                            border-left: none;
+                            right: 0;
+                        }
+                        &:before {
+                            border-right: none;
+                            left: 0;
+                        }
+                    }
                     &.open{
                         width: $details_max_width;
+                        div.col-xs-12{
+                            display:block;
+                        }
                     }
+                    
                 }
             }
             

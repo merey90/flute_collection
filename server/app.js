@@ -20,7 +20,6 @@ app.get("/compositions", (rq, rs) => {
             rs.sendStatus(400);
         }
         if (docs) {
-            console.log(docs);
             rs.json(docs);
         }
         else {
